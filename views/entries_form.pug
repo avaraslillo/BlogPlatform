@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    .container.mt-5.justify-center
+      h1.text-center Create a New Blog Post
+      form(action='./', method='POST')
+        .mb-6
+          label.form-label(for='headline') Headline
+          input#headline.form-control(type='text', name='headline', required)
+        .mb-6
+          label.form-label(for='category') Category
+          input#category.form-control(type='text', name='category', required)
+        .mb-6
+          label.form-label(for='body') Content
+          textarea#body.form-control(name='body', rows='10', required)
+        .mb-6
+          label.form-label(for='author') Author
+          input#author.form-control(type='text', name='author', required)
+        button.btn.btn-primary(type='submit') Submit

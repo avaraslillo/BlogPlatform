@@ -1,0 +1,20 @@
+extends layout 
+
+block content
+
+    .container
+      h1.mt-4.mb-4 Bitácora de Viaje
+      table.table.table-striped.table-bordered
+        thead
+          tr
+            th#headline Titular
+            th#category Categoría
+            th#description Cuerpo
+            th#image Autor
+        tbody
+          each entry in entries
+            tr
+              td #{entry.headline}
+              td #{entry.category}
+              td #{entry.body}
+              td #{entry.author}
