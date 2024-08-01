@@ -9,12 +9,10 @@ router.get('/insert-entry', (req, res) => {
     res.render('entries_form');
 });
 
-router.get('/', async (req, res) => {
+/*router.get('/', async (req, res) => {
     try {
-      // Supongo que `getAllEntries` es una función que devuelve una promesa
       const allEntries = await getAllEntries(); // Llama a la función solo una vez
-      console.log(allEntries); // Muestra los datos obtenidos
-  
+      console.log(allEntries); // Muestra los datos obtenido  
       // Renderiza la plantilla PUG con los datos
       res.render('list_of_entries', { entries: allEntries });
     } catch (err) {
@@ -24,7 +22,9 @@ router.get('/', async (req, res) => {
       // Puedes enviar una respuesta de error al cliente si es necesario
       res.status(500).send('Error al obtener las entradas');
     }
-  });
+  });*/
+
+router.get('/', getAllEntries);  
 
 
 

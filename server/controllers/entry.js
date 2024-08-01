@@ -1,10 +1,26 @@
 const uuid = require('uuid').v4;
 const Entry = require('../models/entry');
 
-const getAllEntries = async() => {
+/*const getAllEntries = async() => {
     try{
         const entries = await Entry.find();
+        console.log(entries);
         return entries;
+    }
+    catch(err){
+        console.log(err);
+    }
+}*/
+
+const getAllEntries = async(req, res) => {
+    try{
+        const entries = await Entry.find();
+        res.json({
+            status: 'success',
+            data: {
+                entries: entries
+            }
+        });
     }
     catch(err){
         console.log(err);

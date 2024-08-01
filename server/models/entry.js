@@ -6,22 +6,27 @@ const entrySchema = new moongose.Schema({
         type: String,
         required: [true, 'Headline is required']
     },
-    category: {
+    country: {
         type: String,
-        required: [true, 'Category is required']
+        required: [true, 'Country is required']
+    },
+    city: {
+        type: String,
+        required: [true, 'City is required']
     },
     body: {
         type: String,
         required: [true, 'Category is required']
     },
+    author: {
+        type: String,
+        required: [true, 'Author is required']
+    },
     date:{
         type: Date,
         default: Date.now
     },
-    author: {
-        type: String,
-        required: [true, 'Author is required']
-    }
+
 });
 
 
