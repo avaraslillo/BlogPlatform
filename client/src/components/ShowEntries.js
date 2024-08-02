@@ -1,11 +1,12 @@
-import React from 'react';
+
+import { React, useEffect, useState } from 'react';
 
 function ShowEntries() {
-  const [entries, setEntries] = React.useState([]); // Cambiado de null a [] para evitar errores al mapear
-  const [loading, setLoading] = React.useState(true); // Estado para manejar la carga
-  const [error, setError] = React.useState(null); // Estado para manejar errores
+  const [entries, setEntries] = useState([]); // Cambiado de null a [] para evitar errores al mapear
+  const [loading, setLoading] = useState(true); // Estado para manejar la carga
+  const [error, setError] = useState(null); // Estado para manejar errores
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('entries'); // Asegúrate de que la URL sea la correcta
