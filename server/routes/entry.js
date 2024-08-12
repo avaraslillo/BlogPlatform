@@ -34,7 +34,7 @@ router.post('/', saveEntry);
 
 router.delete('/:id', deleteEntry);
 
-router.patch('/:id', updateEntry);
+router.patch('/:id/edit', updateEntry);
 
 
 
