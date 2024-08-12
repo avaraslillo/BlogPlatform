@@ -1,5 +1,6 @@
 
 import { React, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function ShowEntries() {
   const [entries, setEntries] = useState([]); // Cambiado de null a [] para evitar errores al mapear
@@ -29,6 +30,22 @@ function ShowEntries() {
     fetchData();
   }, []);
 
+  const deleteEntry = async (id) => {
+    try {
+      const response = await fetch(`/entries/${id}`, {
+        method: 'DELETE'
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setEntries(entries.filter(entry => entry._id !== id));
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  };
+
+
   if (loading) return <div>Loading...</div>; // Indicador de carga
   if (error) return <div>Error: {error.message}</div>; // Muestra el error si ocurre
 
@@ -43,6 +60,7 @@ function ShowEntries() {
               <th>Ciudad</th>
               <th>Descripcion</th>
               <th>Autor</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -53,6 +71,10 @@ function ShowEntries() {
                 <td>{entry.city}</td>
                 <td>{entry.body}</td>
                 <td>{entry.author}</td>
+                <td>
+                  <Link to={`/edit-entry/${entry._id}`}><button className="btn btn-success">Editar</button></Link>
+                  <button className="btn btn-danger" onClick={() => deleteEntry(entry._id)}>Eliminar</button>
+                </td>
               </tr>
             ))}
           </tbody>

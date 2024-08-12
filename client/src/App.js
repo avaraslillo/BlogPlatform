@@ -4,6 +4,7 @@ import './App.css';
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import EditEntry from './components/EditEntry';
 import InsertEntry from './components/InsertEntry';
 import ShowEntries from './components/ShowEntries';
 
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ShowEntries/>} />
           <Route path="/insert-entry" element={<InsertEntry/>} />
+          <Route path="/edit-entry/:entryId" element={<EditEntry/>} /> {/* Ruta de edición con ID */}
         </Routes>
       </div>
     </Router>
